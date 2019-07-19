@@ -30,6 +30,15 @@ TEST_CASE("Vec2D class correctly implements its features")
     CHECK(another.y() == original.y());
   }
 
+  SECTION("Vec2D's assignment operator correctly assigns values from other instance")
+  {
+    ::neon::Vec2D v1(12, 34);
+    ::neon::Vec2D v2(56, 78);
+    v1 = v2;
+    CHECK(v1.x() == v2.x());
+    CHECK(v1.y() == v2.y());
+  }
+
   SECTION("operator== correctly tests Vec2D instances for equivalence")
   {
     ::neon::Vec2D v1a(12, 34);

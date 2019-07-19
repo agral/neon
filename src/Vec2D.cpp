@@ -26,6 +26,12 @@ Vec2D::Vec2D(const Vec2D& other)
 {
 }
 
+Vec2D& Vec2D::operator=(const Vec2D& other)
+{
+  // TODO implement
+  return *this;
+}
+
 bool operator==(const Vec2D& lhs, const Vec2D& rhs)
 {
   return ((lhs.m_x == rhs.m_x) && (lhs.m_y == rhs.m_y));
