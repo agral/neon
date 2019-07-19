@@ -50,6 +50,12 @@ Vec2D& Vec2D::operator-=(const Vec2D& other)
   return *this;
 }
 
+Vec2D& Vec2D::operator*=(double k)
+{
+  // TODO implement
+  return *this;
+}
+
 bool operator==(const Vec2D& lhs, const Vec2D& rhs)
 {
   return ((lhs.m_x == rhs.m_x) && (lhs.m_y == rhs.m_y));
@@ -75,6 +81,12 @@ Vec2D operator-(Vec2D lhs, const Vec2D& rhs)
 {
   lhs -= rhs;
   return lhs;
+}
+
+Vec2D operator*(const Vec2D& lhs, double k)
+{
+  // TODO implement:
+  return Vec2D(-1, -1);
 }
 
 } // namespace neon

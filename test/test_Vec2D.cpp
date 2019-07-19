@@ -111,4 +111,22 @@ TEST_CASE("Vec2D class correctly implements its features")
     CHECK(v.x() == a - c);
     CHECK(v.y() == b - d);
   }
+
+  SECTION("operator*(double) works correctly")
+  {
+    double a = 12, b = 34, k = 5;
+    ::neon::Vec2D v(a, b);
+    ::neon::Vec2D w = v * k;
+    CHECK(w.x() == a * k);
+    CHECK(w.y() == b * k);
+  }
+
+  SECTION("operator*=(double) works correctly")
+  {
+    double a = 12, b = 34, k = 7;
+    ::neon::Vec2D v(a, b);
+    v *= k;
+    CHECK(v.x() == a * k);
+    CHECK(v.y() == b * k);
+  }
 }
