@@ -60,6 +60,8 @@ Vec2D& Vec2D::operator*=(double k)
 Vec2D& Vec2D::operator/=(double k)
 {
   // TODO implement
+  this->m_x /= k;
+  this->m_y /= k;
   return *this;
 }
 
@@ -97,8 +99,8 @@ Vec2D operator*(const Vec2D& v, double k)
 
 Vec2D operator/(Vec2D v, double k)
 {
-  // TODO implement
-  return Vec2D(-1, -1);
+  v /= k;
+  return v;
 }
 
 } // namespace neon
