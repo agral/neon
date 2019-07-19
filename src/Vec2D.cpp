@@ -28,7 +28,11 @@ Vec2D::Vec2D(const Vec2D& other)
 
 Vec2D& Vec2D::operator=(const Vec2D& other)
 {
-  // TODO implement
+  if (this != &other)
+  {
+    m_x = other.m_x;
+    m_y = other.m_y;
+  }
   return *this;
 }
 
