@@ -43,7 +43,7 @@ bool operator!=(const Vec2D& lhs, const Vec2D& rhs);
 Vec2D operator+(Vec2D lhs, const Vec2D& rhs);
 Vec2D operator-(const Vec2D& v);
 Vec2D operator-(Vec2D lhs, const Vec2D& rhs);
-Vec2D operator*(const Vec2D& v, double k);
+Vec2D operator*(Vec2D v, double k);
 Vec2D operator/(Vec2D v, double k);
 
 } // namespace neon

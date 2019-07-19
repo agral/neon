@@ -92,9 +92,10 @@ Vec2D operator-(Vec2D lhs, const Vec2D& rhs)
   return lhs;
 }
 
-Vec2D operator*(const Vec2D& v, double k)
+Vec2D operator*(Vec2D v, double k)
 {
-  return Vec2D(v.x() * k, v.y() * k);
+  // TODO: implement
+  return v;
 }
 
 Vec2D operator/(Vec2D v, double k)
