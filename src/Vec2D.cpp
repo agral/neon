@@ -21,10 +21,9 @@ Vec2D::Vec2D(double x, double y)
 }
 
 Vec2D::Vec2D(const Vec2D& other)
-: m_x(-1)
-, m_y(-1)
+: m_x(other.m_x)
+, m_y(other.m_y)
 {
-  // TODO implement
 }
 
 bool operator==(const Vec2D& lhs, const Vec2D& rhs)
