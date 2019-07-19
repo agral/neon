@@ -18,6 +18,7 @@ class Vec2D
   Vec2D(double x = 0.0, double y = 0.0);
   Vec2D(const Vec2D& other);
   Vec2D& operator=(const Vec2D& other);
+  Vec2D& operator+=(const Vec2D& other);
 
   double x() const { return m_x; }
   double y() const { return m_y; }
@@ -35,5 +36,6 @@ class Vec2D
 
 bool operator==(const Vec2D& lhs, const Vec2D& rhs);
 bool operator!=(const Vec2D& lhs, const Vec2D& rhs);
+Vec2D operator+(Vec2D lhs, const Vec2D& rhs);
 
 } // namespace neon

@@ -62,4 +62,26 @@ TEST_CASE("Vec2D class correctly implements its features")
     CHECK(v1a != v2);
     CHECK_FALSE(v1a != v1b);
   }
+
+  //// Arithmetic operators' tests: ////
+  SECTION("operator+ works correctly")
+  {
+    double a = 12, b = 34, c = 56, d = 78;
+    ::neon::Vec2D v(a, b), w(c, d);
+
+    ::neon::Vec2D s = v + w;
+
+    CHECK(s.x() == a + c);
+    CHECK(s.y() == b + d);
+  }
+
+  SECTION("operator+= works correctly")
+  {
+    double a = 21, b = 43, c = 65, d = 87;
+    ::neon::Vec2D v(a, b), w(c, d);
+    v += w;
+
+    CHECK(v.x() == a + c);
+    CHECK(v.y() == b + d);
+  }
 }
