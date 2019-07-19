@@ -15,8 +15,8 @@ namespace neon
 {
 
 Vec2D::Vec2D(double x, double y)
-: m_x(-1)
-, m_y(-1)
+: m_x(x)
+, m_y(y)
 {
   //TODO: implement
 }
