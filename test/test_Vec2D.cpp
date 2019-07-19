@@ -37,6 +37,10 @@ TEST_CASE("Vec2D class correctly implements its features")
     v1 = v2;
     CHECK(v1.x() == v2.x());
     CHECK(v1.y() == v2.y());
+
+    // Also assures that the original vector has not been modified:
+    CHECK(v2.x() == 56);
+    CHECK(v2.y() == 78);
   }
 
   SECTION("operator== correctly tests Vec2D instances for equivalence")
