@@ -65,9 +65,9 @@ $(DIR_BIN)/$(EXE_NAME_DEBUG): $(OBJECTS_APP)
 	$(CXX) $(LDFLAGS) -o $(DIR_BIN)/$(EXE_NAME_DEBUG) $(OBJECTS_APP) $(LDLIBS)
 
 # Creates a test executable by linking all the app and test object files:
-$(DIR_BIN)/$(EXE_NAME_TEST): $(OBJECTS_APP) $(OBJECTS_TEST)
+$(DIR_BIN)/$(EXE_NAME_TEST): $(OBJECTS_APP_WITHOUT_MAIN) $(OBJECTS_TEST)
 	@mkdir -p $(@D)
-	$(CXX) $(LDFLAGS) -o $(DIR_BIN)/$(EXE_NAME_TEST) $(OBJECTS_TEST) $(LDLIBS)
+	$(CXX) $(LDFLAGS) -o $(DIR_BIN)/$(EXE_NAME_TEST) $(OBJECTS_APP_WITHOUT_MAIN) $(OBJECTS_TEST) $(LDLIBS)
 
 # Compiles a single file of application's source code to an object file:
 $(DIR_OBJ)/%.o: $(DIR_SRC)/%.cpp
