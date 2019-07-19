@@ -17,15 +17,22 @@ class Vec2D
  public:
   Vec2D(double x = 0.0, double y = 0.0);
 
+
   double x() const { return m_x; }
   double y() const { return m_y; }
   void setX(double newX) { m_x = newX; }
   void setY(double newY) { m_y = newY; }
   void setXY(double newX, double newY) { m_x = newX; m_y = newY; }
 
+  friend bool operator==(const Vec2D& lhs, const Vec2D& rhs);
+  friend bool operator!=(const Vec2D& lhs, const Vec2D& rhs);
+
  private:
   double m_x;
   double m_y;
 };
+
+bool operator==(const Vec2D& lhs, const Vec2D& rhs);
+bool operator!=(const Vec2D& lhs, const Vec2D& rhs);
 
 } // namespace neon

@@ -18,7 +18,18 @@ Vec2D::Vec2D(double x, double y)
 : m_x(x)
 , m_y(y)
 {
-  //TODO: implement
+}
+
+bool operator==(const Vec2D& lhs, const Vec2D& rhs)
+{
+  // TODO implement
+  return false;
+}
+
+bool operator!=(const Vec2D& lhs, const Vec2D& rhs)
+{
+  // TODO implement
+  return false;
 }
 
 } // namespace neon
