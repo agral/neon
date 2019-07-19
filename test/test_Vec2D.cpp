@@ -84,4 +84,31 @@ TEST_CASE("Vec2D class correctly implements its features")
     CHECK(v.x() == a + c);
     CHECK(v.y() == b + d);
   }
+
+  SECTION("unary minus operator works correctly")
+  {
+    double a = 12, b = 34;
+    ::neon::Vec2D v(a, b);
+    ::neon::Vec2D w = -v;
+    CHECK(w.x() == -a);
+    CHECK(w.y() == -b);
+  }
+
+  SECTION("operator- works correctly")
+  {
+    double a = 12, b = 34, c = 56, d = 78;
+    ::neon::Vec2D v(a, b), w(c, d);
+    ::neon::Vec2D s = v - w;
+    CHECK(s.x() == a - c);
+    CHECK(s.y() == b - d);
+  }
+
+  SECTION("operator-= works correctly")
+  {
+    double a = 12, b = 34, c = 56, d = 78;
+    ::neon::Vec2D v(a, b), w(c, d);
+    v -= w;
+    CHECK(v.x() == a - c);
+    CHECK(v.y() == b - d);
+  }
 }
