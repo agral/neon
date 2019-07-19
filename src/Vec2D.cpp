@@ -20,6 +20,13 @@ Vec2D::Vec2D(double x, double y)
 {
 }
 
+Vec2D::Vec2D(const Vec2D& other)
+: m_x(-1)
+, m_y(-1)
+{
+  // TODO implement
+}
+
 bool operator==(const Vec2D& lhs, const Vec2D& rhs)
 {
   return ((lhs.m_x == rhs.m_x) && (lhs.m_y == rhs.m_y));

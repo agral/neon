@@ -16,6 +16,7 @@ class Vec2D
 {
  public:
   Vec2D(double x = 0.0, double y = 0.0);
+  Vec2D(const Vec2D& other);
 
 
   double x() const { return m_x; }

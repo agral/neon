@@ -22,6 +22,14 @@ TEST_CASE("Vec2D class correctly implements its features")
     CHECK(v.y() == 34);
   }
 
+  SECTION("Vec2D's copy constructor correctly assigns the member fields")
+  {
+    ::neon::Vec2D original(12, 34);
+    ::neon::Vec2D another(original);
+    CHECK(another.x() == original.x());
+    CHECK(another.y() == original.y());
+  }
+
   SECTION("operator== correctly tests Vec2D instances for equivalence")
   {
     ::neon::Vec2D v1a(12, 34);
