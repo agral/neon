@@ -22,14 +22,12 @@ Vec2D::Vec2D(double x, double y)
 
 bool operator==(const Vec2D& lhs, const Vec2D& rhs)
 {
-  // TODO implement
-  return false;
+  return ((lhs.m_x == rhs.m_x) && (lhs.m_y == rhs.m_y));
 }
 
 bool operator!=(const Vec2D& lhs, const Vec2D& rhs)
 {
-  // TODO implement
-  return false;
+  return !operator==(lhs, rhs);
 }
 
 } // namespace neon
