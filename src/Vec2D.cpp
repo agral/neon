@@ -94,7 +94,7 @@ Vec2D operator-(Vec2D lhs, const Vec2D& rhs)
 
 Vec2D operator*(Vec2D v, double k)
 {
-  // TODO: implement
+  v *= k;
   return v;
 }
 
