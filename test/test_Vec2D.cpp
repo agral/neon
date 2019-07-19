@@ -14,4 +14,11 @@ TEST_CASE("Vec2D class correctly implements its features")
     REQUIRE(v.x() == 56);
     REQUIRE(v.y() == 78);
   }
+
+  SECTION("Vec2D's constructor correctly assigns the member fields")
+  {
+    ::neon::Vec2D v(12, 34);
+    CHECK(v.x() == 12);
+    CHECK(v.y() == 34);
+  }
 }
