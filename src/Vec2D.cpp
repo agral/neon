@@ -38,7 +38,8 @@ Vec2D& Vec2D::operator=(const Vec2D& other)
 
 Vec2D& Vec2D::operator+=(const Vec2D& other)
 {
-  /* TODO implement */
+  this->m_x += other.m_x;
+  this->m_y += other.m_y;
   return *this;
 }
 
@@ -54,7 +55,7 @@ bool operator!=(const Vec2D& lhs, const Vec2D& rhs)
 
 Vec2D operator+(Vec2D lhs, const Vec2D& rhs)
 {
-  /* TODO implement */
+  lhs += rhs;
   return lhs;
 }
 
