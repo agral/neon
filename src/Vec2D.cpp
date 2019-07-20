@@ -2,7 +2,7 @@
  * Name: Vec2D.cpp
  * Description: Implements a class representing a vector on a 2D plane.
  * Created on: 19.07.2019
- * Last modified: 19.07.2019
+ * Last modified: 20.07.2019
  * Author: Adam Graliński (adam@gralin.ski)
  * License: MIT
  */
@@ -26,6 +26,7 @@ Vec2D::Vec2D(const Vec2D& other)
 {
 }
 
+//// Operators' implementation: ////
 Vec2D& Vec2D::operator=(const Vec2D& other)
 {
   if (this != &other)
@@ -103,5 +104,12 @@ Vec2D operator/(Vec2D v, double k)
   v /= k;
   return v;
 }
+//// End of operators' implementation. ////
+
+double Vec2D::magnitude() const
+{
+  return -1;
+}
+
 
 } // namespace neon

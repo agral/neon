@@ -1,4 +1,5 @@
 #include <catch2/catch.hpp>
+#include <cmath>
 #include "../src/Vec2D.hpp"
 
 TEST_CASE("Vec2D class correctly implements its features")
@@ -146,5 +147,14 @@ TEST_CASE("Vec2D class correctly implements its features")
     v /= k;
     CHECK(v.x() == a / k);
     CHECK(v.y() == b / k);
+  }
+
+  //// End of arithmetic operators' tests. ////
+
+  SECTION("Vec2D's magnitude is correctly calculated")
+  {
+    double a = -3, b = -4;
+    ::neon::Vec2D v1(a, b);
+    CHECK(v1.magnitude() == std::sqrt((a * a) + (b * b)));
   }
 }
