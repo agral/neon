@@ -60,7 +60,6 @@ Vec2D& Vec2D::operator*=(double k)
 
 Vec2D& Vec2D::operator/=(double k)
 {
-  // TODO implement
   this->m_x /= k;
   this->m_y /= k;
   return *this;
