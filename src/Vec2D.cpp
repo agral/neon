@@ -108,7 +108,7 @@ Vec2D operator/(Vec2D v, double k)
 
 double Vec2D::magnitude() const
 {
-  return -1;
+  return std::sqrt((m_x * m_x) + (m_y * m_y));
 }
 
 
