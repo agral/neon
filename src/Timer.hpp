@@ -20,10 +20,10 @@ class Timer
 {
  public:
   Timer() {}
-  void start() {}
-  void stop() {}
+  void start();
+  void stop();
   double milliseconds() const {return -1;}
-  bool isStarted() const {return false;}
+  bool isStarted() const { return m_isStarted; }
 
  private:
   std::chrono::time_point<Clock> m_startTimePoint;
