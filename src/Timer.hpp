@@ -1,0 +1,33 @@
+/**
+ * Name: Timer.hpp
+ * Description: Provides an interface to a class representing a timer/stopwatch.
+ * Created on: 21.07.2019
+ * Last modified: 21.07.2019
+ * Author: Adam Graliński (adam@gralin.ski)
+ * License: MIT
+ */
+
+#pragma once
+
+#include <chrono>
+
+namespace neon
+{
+
+typedef std::chrono::high_resolution_clock Clock;
+
+class Timer
+{
+ public:
+  Timer() {}
+  void start() {}
+  void stop() {}
+  double milliseconds() const {return -1;}
+  bool isStarted() const {return false;}
+
+ private:
+  std::chrono::time_point<Clock> m_startTimePoint;
+  bool m_isStarted;
+};
+
+} // namespace neon
