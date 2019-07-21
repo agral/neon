@@ -20,7 +20,7 @@ class Timer
 {
  public:
   Timer()
-  : m_isStarted(true)
+  : m_isStarted(false)
   {
   };
 
