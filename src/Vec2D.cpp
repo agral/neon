@@ -114,7 +114,7 @@ double Vec2D::magnitude() const
 std::string Vec2D::toString() const
 {
   std::stringstream ss;
-  ss << "(" << -1 << ", " << -1 << ")";
+  ss << "(" << m_x << ", " << m_y << ")";
   return ss.str();
 }
 
