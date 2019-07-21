@@ -2,7 +2,7 @@
  * Name: Vec2D.cpp
  * Description: Implements a class representing a vector on a 2D plane.
  * Created on: 19.07.2019
- * Last modified: 20.07.2019
+ * Last modified: 21.07.2019
  * Author: Adam Graliński (adam@gralin.ski)
  * License: MIT
  */
@@ -10,6 +10,7 @@
 #include "Vec2D.hpp"
 
 #include <cmath>
+#include <sstream>
 
 namespace neon
 {
@@ -108,6 +109,13 @@ Vec2D operator/(Vec2D v, double k)
 double Vec2D::magnitude() const
 {
   return std::sqrt((m_x * m_x) + (m_y * m_y));
+}
+
+std::string Vec2D::toString() const
+{
+  std::stringstream ss;
+  ss << "(" << -1 << ", " << -1 << ")";
+  return ss.str();
 }
 
 

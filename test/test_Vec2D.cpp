@@ -157,4 +157,14 @@ TEST_CASE("Vec2D class correctly implements its features")
     ::neon::Vec2D v1(a, b);
     CHECK(v1.magnitude() == std::sqrt((a * a) + (b * b)));
   }
+
+  SECTION("Vec2D's toString() method correctly serializes the instances")
+  {
+    ::neon::Vec2D v(12, 34);
+    CHECK(v.toString() == "(12, 34)");
+
+    // Ensures that floating point values get serialized correctly as well:
+    ::neon::Vec2D w(54.321, -9.876);
+    CHECK(w.toString() == "(54.321, -9.876)");
+  }
 }

@@ -2,12 +2,14 @@
  * Name: Vec2D.hpp
  * Description: Provides an interface to a class representing a vector on a 2D plane.
  * Created on: 18.07.2019
- * Last modified: 20.07.2019
+ * Last modified: 21.07.2019
  * Author: Adam Graliński (adam@gralin.ski)
  * License: MIT
  */
 
 #pragma once
+
+#include <string>
 
 namespace neon
 {
@@ -24,6 +26,7 @@ class Vec2D
   Vec2D& operator/=(double k);
 
   double magnitude() const;
+  std::string toString() const;
 
   double x() const { return m_x; }
   double y() const { return m_y; }
