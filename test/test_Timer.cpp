@@ -12,6 +12,12 @@
 
 TEST_CASE("Timer class correctly implements its features")
 {
+  SECTION("Timer is in stopped state after being initialized")
+  {
+    ::neon::Timer t;
+    CHECK(t.isStarted() == false);
+  }
+
   SECTION("Timer can be started and stopped")
   {
     ::neon::Timer t;

@@ -19,7 +19,11 @@ typedef std::chrono::high_resolution_clock Clock;
 class Timer
 {
  public:
-  Timer() {}
+  Timer()
+  : m_isStarted(true)
+  {
+  };
+
   void start();
   void stop();
   double milliseconds() const {return -1;}
