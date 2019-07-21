@@ -26,7 +26,7 @@ class Timer
 
   void start();
   void stop();
-  double milliseconds() const {return -1;}
+  double time() const;
   bool isStarted() const { return m_isStarted; }
 
  private:

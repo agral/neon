@@ -22,4 +22,10 @@ void Timer::stop()
   m_isStarted = false;
 }
 
+double Timer::time() const
+{
+  double result = -1.0;
+  return result;
+}
+
 } // namespace neon
