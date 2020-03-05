@@ -2,7 +2,7 @@
  * Name: Engine.cpp
  * Description: Implements a class representing a Neon rendering engine
  * Created on: 26.07.2019
- * Last modified: 26.07.2019
+ * Last modified: 25.10.2019
  * Author: Adam Graliński (adam@gralin.ski)
  * License: MIT
  */
@@ -22,6 +22,11 @@ Engine::Engine()
 , m_renderer(nullptr)
 , m_screenSurface(nullptr)
 {
+}
+
+Engine::~Engine()
+{
+  close();
 }
 
 bool Engine::init()
