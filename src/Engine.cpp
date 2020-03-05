@@ -2,7 +2,7 @@
  * Name: Engine.cpp
  * Description: Implements a class representing a Neon rendering engine
  * Created on: 26.07.2019
- * Last modified: 25.10.2019
+ * Last modified: 05.03.2020
  * Author: Adam Graliński (adam@gralin.ski)
  * License: MIT
  */
@@ -17,6 +17,10 @@
 namespace neon
 {
 
+const int Engine::DEFAULT_WINDOW_WIDTH = 800;
+const int Engine::DEFAULT_WINDOW_HEIGHT = 600;
+const Uint32 Engine::DEFAULT_WINDOW_FLAGS = SDL_WINDOW_SHOWN;
+
 Engine::Engine()
 : m_window(nullptr)
 , m_renderer(nullptr)
@@ -29,7 +33,7 @@ Engine::~Engine()
   close();
 }
 
-bool Engine::init()
+bool Engine::init(const std::string& title, int posX, int posY, int width, int height, Uint32 flags)
 {
   if (SDL_Init(SDL_INIT_VIDEO) < 0)
   {
@@ -43,14 +47,7 @@ bool Engine::init()
     LOG(log::WARNING) << "Could not enable linear texture filtering.";
   }
 
-  m_window = SDL_CreateWindow(
-    "neon",
-    SDL_WINDOWPOS_UNDEFINED,
-    SDL_WINDOWPOS_UNDEFINED,
-    800,
-    600,
-    SDL_WINDOW_SHOWN
-  );
+  m_window = SDL_CreateWindow(title.c_str(), posX, posY, width, height, flags);
   if (m_window == nullptr)
   {
     LOG(log::ERROR) << "Failed to create a game window.";
