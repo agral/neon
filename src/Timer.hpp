@@ -2,7 +2,7 @@
  * Name: Timer.hpp
  * Description: Provides an interface to a class representing a timer/stopwatch.
  * Created on: 21.07.2019
- * Last modified: 21.07.2019
+ * Last modified: 06.03.2020
  * Author: Adam Graliński (adam@gralin.ski)
  * License: MIT
  */
@@ -14,16 +14,11 @@
 namespace neon
 {
 
-typedef std::chrono::high_resolution_clock Clock;
+using Clock = std::chrono::high_resolution_clock;
 
 class Timer
 {
  public:
-  Timer()
-  : m_isStarted(false)
-  {
-  };
-
   void start();
   void stop();
   double time() const;
@@ -31,7 +26,7 @@ class Timer
 
  private:
   std::chrono::time_point<Clock> m_startTimePoint;
-  bool m_isStarted;
+  bool m_isStarted = false;
 };
 
 } // namespace neon
