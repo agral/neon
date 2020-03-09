@@ -2,7 +2,7 @@
  * Name: Engine.cpp
  * Description: Implements a class representing a Neon rendering engine
  * Created on: 26.07.2019
- * Last modified: 05.03.2020
+ * Last modified: 09.03.2020
  * Author: Adam Graliński (adam@gralin.ski)
  * License: MIT
  */
@@ -13,6 +13,8 @@
 #include <SDL2/SDL_ttf.h>
 
 #include "log/Logger.hpp"
+#include "utility/FileUtils.hpp"
+#include "Timer.hpp"
 
 namespace neon
 {
@@ -35,6 +37,16 @@ Engine::~Engine()
 
 bool Engine::init(const std::string& title, int posX, int posY, int width, int height, Uint32 flags)
 {
+  LOG(log::VERBOSE) << "Trying to locate assets' path...";
+  bool result = ::neon::utility::getAssetsPath(m_pathAssets);
+  if (result) {
+    LOG(log::INFO) << "Assets path: " << m_pathAssets;
+  }
+  else {
+    LOG(log::ERROR) << "Could not locate assets path.\n";
+    return false;
+  }
+
   if (SDL_Init(SDL_INIT_VIDEO) < 0)
   {
     LOG(log::ERROR) << "Failed to initialize the SDL system.";
@@ -86,17 +98,27 @@ bool Engine::init(const std::string& title, int posX, int posY, int width, int h
     LOG(log::ERROR) << "SDL error: " << SDL_GetError();
     return false;
   }
+
   return true;
 }
 
 void Engine::startMainLoop()
 {
+  Timer fpsCapTimer;
+  auto millisecondsPerFrame = 1000.0 / 60.0;
+  unsigned long long currentFrame = 0ULL;
+
+  LOG(log::VERBOSE) << "Initializing main loop at " << millisecondsPerFrame << " milliseconds per frame";
+
   bool isQuittingMainLoop = false;
   SDL_Event sdlEvent;
+
   while (!isQuittingMainLoop)
   {
+    fpsCapTimer.start();
+
     // Processes the incoming events:
-    while (SDL_PollEvent(&sdlEvent))
+    while (SDL_PollEvent(&sdlEvent) != 0)
     {
       if (sdlEvent.type == SDL_QUIT)
       {
@@ -117,11 +139,22 @@ void Engine::startMainLoop()
     // @TODO: write code that actually renders the scene.
 
     SDL_RenderPresent(m_renderer);
+
+    currentFrame += 1ULL;
+    // Caps the frame rate at target FPS value:
+    double frameDurationMilliseconds = fpsCapTimer.time() * 1000;
+    if (frameDurationMilliseconds < millisecondsPerFrame) {
+      SDL_Delay(millisecondsPerFrame - frameDurationMilliseconds);
+    }
+    if (currentFrame % 60 == 0) {
+      LOG(log::DEBUG) << "Frame: " << currentFrame;
+    }
   }
 }
 
 void Engine::close()
 {
+  LOG(log::DEBUG) << "Engine::close()";
   SDL_DestroyRenderer(m_renderer);
   m_renderer = nullptr;
 
