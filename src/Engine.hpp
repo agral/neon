@@ -43,6 +43,8 @@ class Engine
 
   std::string m_pathAssets;
   SDL_Window* m_window;
+  int m_windowWidth;
+  int m_windowHeight;
   SDL_Renderer* m_renderer;
   SDL_Surface* m_screenSurface;
 };
