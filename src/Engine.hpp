@@ -2,7 +2,7 @@
  * Name: Engine.hpp
  * Description: Provides an interface to a Neon rendering engine.
  * Created on: 26.07.2019
- * Last modified: 09.03.2020
+ * Last modified: 10.03.2020
  * Author: Adam Graliński (adam@gralin.ski)
  * License: MIT
  */
@@ -41,12 +41,12 @@ class Engine
  private:
   void close();
 
-  std::string m_pathAssets;
-  SDL_Window* m_window;
-  int m_windowWidth;
-  int m_windowHeight;
-  SDL_Renderer* m_renderer;
-  SDL_Surface* m_screenSurface;
+  std::string pathAssets_;
+  SDL_Window* window_;
+  int windowWidth_;
+  int windowHeight_;
+  SDL_Renderer* renderer_;
+  SDL_Surface* screenSurface_;
 };
 
 } // namespace neon
