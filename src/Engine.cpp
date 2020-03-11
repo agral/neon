@@ -11,6 +11,7 @@
 
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
+#include <cmath>
 
 #include "log/Logger.hpp"
 #include "utility/FileUtils.hpp"
@@ -118,11 +119,11 @@ bool Engine::init(const std::string& title, int posX, int posY, int width, int h
 
 void Engine::startMainLoop()
 {
-  Timer fpsCapTimer;
   auto millisecondsPerFrame = 1000.0 / 60.0;
   unsigned long long currentFrame = 0ULL;
 
   LOG(log::VERBOSE) << "Initializing main loop at " << millisecondsPerFrame << " milliseconds per frame";
+
   Texture neonTexture;
   std::string path = pathAssets_ + "neon_logo.png";
   if (!neonTexture.loadFromFile(path, renderer_))
@@ -136,9 +137,14 @@ void Engine::startMainLoop()
   bool isQuittingMainLoop = false;
   SDL_Event sdlEvent;
 
+  Timer tRealtime;
+  Timer tFpsCap; // will be restarted on every game loop iteration.
+
+  tRealtime.start();
+
   while (!isQuittingMainLoop)
   {
-    fpsCapTimer.start();
+    tFpsCap.start();
 
     // Processes the incoming events:
     while (SDL_PollEvent(&sdlEvent) != 0)
@@ -150,7 +156,10 @@ void Engine::startMainLoop()
     }
 
     // Applies game logic:
-    // (TODO implement)
+    auto timeNow = tRealtime.time();
+
+    Uint8 blue = std::abs(std::fmod(timeNow, 2.0) - 1.0) * 256;
+    this->setBackgroundFillColor({0, 0, blue, 255});
 
     // Renders the scene:
     SDL_SetRenderDrawColor(
@@ -174,12 +183,10 @@ void Engine::startMainLoop()
 
     currentFrame += 1ULL;
     // Caps the frame rate at target FPS value:
-    double frameDurationMilliseconds = fpsCapTimer.time() * 1000;
+    double frameDurationMilliseconds = tFpsCap.time() * 1000;
     if (frameDurationMilliseconds < millisecondsPerFrame) {
       SDL_Delay(millisecondsPerFrame - frameDurationMilliseconds);
     }
-    Uint8 blue = std::abs(static_cast<Uint8>(currentFrame % 256) - 128);
-    this->setBackgroundFillColor({0, 0, blue, 255});
   }
 }
 
