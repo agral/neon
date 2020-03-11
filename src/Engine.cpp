@@ -2,7 +2,7 @@
  * Name: Engine.cpp
  * Description: Implements a class representing a Neon rendering engine
  * Created on: 26.07.2019
- * Last modified: 10.03.2020
+ * Last modified: 11.03.2020
  * Author: Adam Graliński (adam@gralin.ski)
  * License: MIT
  */
@@ -31,6 +31,7 @@ Engine::Engine()
 , windowHeight_(0)
 , renderer_(nullptr)
 , screenSurface_(nullptr)
+, clBackgroundFill_(SDL_Color{0, 0, 0, 255})
 {
 }
 
@@ -152,7 +153,13 @@ void Engine::startMainLoop()
     // (TODO implement)
 
     // Renders the scene:
-    SDL_SetRenderDrawColor(renderer_, 0, 0, 0, 0xFF);
+    SDL_SetRenderDrawColor(
+        renderer_,
+        clBackgroundFill_.r,
+        clBackgroundFill_.g,
+        clBackgroundFill_.b,
+        clBackgroundFill_.a
+    );
     // @TODO define the scene color as set/get-able class member variable.
     // @TODO maybe define a lightweight wrapper on SDL_Color struct?
 
@@ -171,7 +178,14 @@ void Engine::startMainLoop()
     if (frameDurationMilliseconds < millisecondsPerFrame) {
       SDL_Delay(millisecondsPerFrame - frameDurationMilliseconds);
     }
+    Uint8 blue = std::abs(static_cast<Uint8>(currentFrame % 256) - 128);
+    this->setBackgroundFillColor({0, 0, blue, 255});
   }
+}
+
+void Engine::setBackgroundFillColor(SDL_Color clBackgroundFill)
+{
+  clBackgroundFill_ = clBackgroundFill;
 }
 
 void Engine::close()

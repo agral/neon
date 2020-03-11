@@ -2,7 +2,7 @@
  * Name: Engine.hpp
  * Description: Provides an interface to a Neon rendering engine.
  * Created on: 26.07.2019
- * Last modified: 10.03.2020
+ * Last modified: 11.03.2020
  * Author: Adam Graliński (adam@gralin.ski)
  * License: MIT
  */
@@ -37,6 +37,7 @@ class Engine
       Uint32 flags = DEFAULT_WINDOW_FLAGS
   );
   void startMainLoop();
+  void setBackgroundFillColor(SDL_Color clBackgroundFill);
 
  private:
   void close();
@@ -47,6 +48,7 @@ class Engine
   int windowHeight_;
   SDL_Renderer* renderer_;
   SDL_Surface* screenSurface_;
+  SDL_Color clBackgroundFill_;
 };
 
 } // namespace neon
