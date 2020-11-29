@@ -2,7 +2,7 @@
  * Name: Texture.hpp
  * Description: Implements a class representing a Neon texture
  * Created on: 09.03.2020
- * Last modified: 10.03.2020
+ * Last modified: 29.11.2020
  * Author: Adam Graliński (adam@gralin.ski)
  * License: MIT
  */
@@ -28,7 +28,7 @@ class Texture
       double angle = 0.0,
       SDL_Point* center = nullptr,
       SDL_RendererFlip flip = SDL_FLIP_NONE
-  );
+  ) const;
   int width() const;
   int height() const;
 

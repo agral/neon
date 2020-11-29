@@ -2,7 +2,7 @@
  * Name: Texture.cpp
  * Description: Implements a class representing a Neon texture
  * Created on: 09.03.2020
- * Last modified: 10.03.2020
+ * Last modified: 29.11.2020
  * Author: Adam Graliński (adam@gralin.ski)
  * License: MIT
  */
@@ -74,8 +74,12 @@ void Texture::render(
     double angle,
     SDL_Point* center,
     SDL_RendererFlip flip
-)
+) const
 {
+  LOG(log::VERBOSE) << "[Texture] Render(), renderer = " << renderer_
+      << ",\nTexture = " << texture_
+      << ",\nX: " << x << ", Y: " << y
+      << "\n, width = " << width_ << ", height = " << height_;
   SDL_Rect targetBox = {x, y, width_, height_};
 
   if (clip != nullptr) {
