@@ -2,7 +2,7 @@
  * Name: Engine.cpp
  * Description: Implements a class representing a Neon rendering engine
  * Created on: 26.07.2019
- * Last modified: 11.03.2020
+ * Last modified: 29.11.2020
  * Author: Adam Graliński (adam@gralin.ski)
  * License: MIT
  */
@@ -16,6 +16,7 @@
 #include "log/Logger.hpp"
 #include "utility/FileUtils.hpp"
 #include "Texture.hpp"
+#include "TextureManager.hpp"
 #include "Timer.hpp"
 
 namespace neon
@@ -124,6 +125,13 @@ void Engine::startMainLoop()
 
   LOG(log::VERBOSE) << "Initializing main loop at " << millisecondsPerFrame << " milliseconds per frame";
 
+  // Loads the textures:
+  TextureManager tm(renderer_);
+  if (!tm.loadMedia(pathAssets_, renderer_)) {
+    LOG(log::ERROR) << "[Engine] Failed to load necessary resources.";
+    return;
+  }
+
   Texture neonTexture;
   std::string path = pathAssets_ + "neon_logo.png";
   if (!neonTexture.loadFromFile(path, renderer_))
@@ -174,10 +182,12 @@ void Engine::startMainLoop()
 
     SDL_RenderClear(renderer_);
 
-    // @TODO: write code that actually renders the scene.
-    auto x = 0.5 * (windowWidth_ - neonTexture.width());
-    auto y = 0.5 * (windowHeight_ - neonTexture.height());
-    neonTexture.render(x, y);
+    // Draws the project logo, centered:
+    auto x = 0.5 * (windowWidth_ - tm.logo().width());
+    auto y = 0.5 * (windowHeight_ - tm.logo().height());
+    LOG(log::VERBOSE) << "Calling render from TM...";
+    const Texture& tx = tm.logo();
+    tx.render(x, y);
 
     SDL_RenderPresent(renderer_);
 
