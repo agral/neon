@@ -1,12 +1,3 @@
-/**
- * Name: Engine.cpp
- * Description: Implements a class representing a Neon rendering engine
- * Created on: 26.07.2019
- * Last modified: 29.11.2020
- * Author: Adam Graliński (adam@gralin.ski)
- * License: MIT
- */
-
 #include "Engine.hpp"
 
 #include <SDL2/SDL_image.h>
@@ -45,9 +36,10 @@ Engine::~Engine()
 bool Engine::init(const std::string& title, int posX, int posY, int width, int height, Uint32 flags)
 {
   LOG(log::VERBOSE) << "Trying to locate assets' path...";
-  bool result = ::neon::utility::getAssetsPath(pathAssets_);
-  if (result) {
-    LOG(log::INFO) << "Assets path: " << pathAssets_;
+  auto assets_path = ::neon::utility::getAssetsPath();
+  if (assets_path) {
+    LOG(log::INFO) << "Assets path: " << assets_path.value();
+    pathAssets_ = assets_path.value();
   }
   else {
     LOG(log::ERROR) << "Could not locate assets path.\n";
