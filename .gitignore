@@ -1,3 +1,4 @@
 bin/
+/lib/
 .clang-format
 cppcheck_log.txt
