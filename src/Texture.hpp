@@ -1,12 +1,3 @@
-/**
- * Name: Texture.hpp
- * Description: Implements a class representing a Neon texture
- * Created on: 09.03.2020
- * Last modified: 29.11.2020
- * Author: Adam Graliński (adam@gralin.ski)
- * License: MIT
- */
-
 #pragma once
 
 #include <SDL2/SDL.h>
@@ -38,7 +29,5 @@ class Texture
   int width_;
   int height_;
 };
-
-
 
 } // namespace neon

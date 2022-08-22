@@ -1,12 +1,3 @@
-/**
- * Name: TextureManager.cpp
- * Description: Implements a resource manager for dynamically allocated textures.
- * Created on: 11.03.2020
- * Last modified: 29.11.2020
- * Author: Adam Graliński (adam@gralin.ski)
- * License: MIT
- */
-
 #include "TextureManager.hpp"
 #include "log/Logger.hpp"
 

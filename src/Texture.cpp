@@ -1,12 +1,3 @@
-/**
- * Name: Texture.cpp
- * Description: Implements a class representing a Neon texture
- * Created on: 09.03.2020
- * Last modified: 29.11.2020
- * Author: Adam Graliński (adam@gralin.ski)
- * License: MIT
- */
-
 #include "Texture.hpp"
 #include <SDL2/SDL_image.h>
 #include "log/Logger.hpp"

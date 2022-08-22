@@ -1,12 +1,3 @@
-/**
- * Name: Timer.hpp
- * Description: Provides an interface to a class representing a timer/stopwatch.
- * Created on: 21.07.2019
- * Last modified: 06.03.2020
- * Author: Adam Graliński (adam@gralin.ski)
- * License: MIT
- */
-
 #pragma once
 
 #include <chrono>

@@ -1,14 +1,5 @@
 #pragma once
 
-/**
- * Name: TextureManager.hpp
- * Description: Declares an interface to a resource manager for dynamically allocated textures.
- * Created on: 11.03.2020
- * Last modified: 29.11.2020
- * Author: Adam Graliński (adam@gralin.ski)
- * License: MIT
- */
-
 #include <map>
 #include <string>
 #include "Texture.hpp"

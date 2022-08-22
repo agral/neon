@@ -1,12 +1,3 @@
-/**
- * Name: Logger.hpp
- * Description: Provides an interface of a simple logging utility.
- * Created on: 16.07.2019
- * Last modified: 18.07.2019
- * Author: Adam Graliński (adam@gralin.ski)
- * License: MIT
- */
-
 #pragma once
 
 #include <sstream>

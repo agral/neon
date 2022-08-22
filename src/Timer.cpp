@@ -1,12 +1,3 @@
-/**
- * Name: Timer.cpp
- * Description: Implements a class representing a timer/stopwatch.
- * Created on: 21.07.2019
- * Last modified: 21.07.2019
- * Author: Adam Graliński (adam@gralin.ski)
- * License: MIT
- */
-
 #include "Timer.hpp"
 
 namespace neon
