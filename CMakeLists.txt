@@ -32,14 +32,14 @@ add_library(Neon_lib STATIC ${SRC_SOURCES})
 
 
 ### Test binary target: test_Neon
-#add_subdirectory(lib/googletest)
-#file(GLOB_RECURSE TEST_SOURCES LIST_DIRECTORIES true
-#    test/*.hpp
-#    test/*.cpp
-#)
-#add_test(
-#    NAME test_Neon
-#    COMMAND test_Neon
-#)
-#add_executable(test_Neon ${TEST_SOURCES})
-#target_link_libraries(test_Neon PUBLIC ${CMAKE_PROJECT_NAME}_lib gtest)
+add_subdirectory(lib/googletest)
+file(GLOB_RECURSE TEST_SOURCES LIST_DIRECTORIES true
+    test/*.hpp
+    test/*.cpp
+)
+add_test(
+    NAME test_Neon
+    COMMAND test_Neon
+)
+add_executable(test_Neon ${TEST_SOURCES})
+target_link_libraries(test_Neon PUBLIC ${CMAKE_PROJECT_NAME}_lib gtest)
