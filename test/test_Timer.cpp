@@ -6,8 +6,7 @@
 
 using ::neon::Timer;
 
-TEST(TimerTest, TimerStoppedAfterConstructed)
-{
+TEST(TimerTest, TimerStoppedAfterConstructed) {
   // Given a default-constructed Timer,
   Timer t{};
 
@@ -15,18 +14,26 @@ TEST(TimerTest, TimerStoppedAfterConstructed)
   EXPECT_FALSE(t.isStarted());
 }
 
+TEST(TimerTest, TimerCanBeStartedAndStopped) {
+  // Given a Timer,
+  Timer t{};
+
+  // When it is manually started,
+  t.start();
+
+  // Then it is in a started state.
+  EXPECT_TRUE(t.isStarted());
+
+  // And when it is manually stopped,
+  t.stop();
+
+  // Then it is in a stopped state.
+  EXPECT_FALSE(t.isStarted());
+}
 
 /*
 TEST_CASE("Timer class correctly implements its features")
 {
-  SECTION("Timer can be started and stopped")
-  {
-    ::neon::Timer t;
-    t.start();
-    CHECK(t.isStarted() == true);
-    t.stop();
-    CHECK(t.isStarted() == false);
-  }
 
   SECTION("Timer accurately reports the elapsed time")
   {
