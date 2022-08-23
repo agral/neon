@@ -1,25 +1,24 @@
-/**
- * Name: test_Timer.cpp
- * Description: Contains the unit tests for neon::Timer class implementation.
- * Created on: 21.07.2019
- * Last modified: 21.07.2019
- * Author: Adam Graliński (adam@gralin.ski)
- * License: MIT
- */
-
-#include <catch2/catch.hpp>
+#include <gtest/gtest.h>
 #include <chrono>
 #include <thread>
+
 #include "../src/Timer.hpp"
 
+using ::neon::Timer;
+
+TEST(TimerTest, TimerStoppedAfterConstructed)
+{
+  // Given a default-constructed Timer,
+  Timer t{};
+
+  // Then it's in a stopped state.
+  EXPECT_FALSE(t.isStarted());
+}
+
+
+/*
 TEST_CASE("Timer class correctly implements its features")
 {
-  SECTION("Timer is in stopped state after being initialized")
-  {
-    ::neon::Timer t;
-    CHECK(t.isStarted() == false);
-  }
-
   SECTION("Timer can be started and stopped")
   {
     ::neon::Timer t;
@@ -55,3 +54,4 @@ TEST_CASE("Timer class correctly implements its features")
     CHECK(dur2 <= durT);
   }
 }
+*/
