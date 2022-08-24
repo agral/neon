@@ -1,7 +1,19 @@
-#include <catch2/catch.hpp>
+#include <gtest/gtest.h>
 #include <cmath>
+
 #include "../src/Vec2D.hpp"
 
+using ::neon::Vec2D;
+
+namespace {
+class Vec2DTest: public ::testing::Test {
+};
+} // end of anonymous namespace
+
+TEST(Vec2DTest, SettersUpdateTheValueOfMemberFields) {
+}
+
+/*
 TEST_CASE("Vec2D class correctly implements its features")
 {
   SECTION("Vec2D's setX, setY and setXY methods correctly set the member fields")
@@ -168,3 +180,4 @@ TEST_CASE("Vec2D class correctly implements its features")
     CHECK(w.toString() == "(54.321, -9.876)");
   }
 }
+*/
