@@ -7,42 +7,60 @@ using ::neon::Vec2D;
 
 namespace {
 class Vec2DTest: public ::testing::Test {
+protected:
+  Vec2D m_vec;
+
+  virtual void SetUp() override {
+    m_vec = Vec2D{1.0, 2.0};
+  }
 };
 } // end of anonymous namespace
 
-TEST(Vec2DTest, SettersUpdateTheValueOfMemberFields) {
+TEST_F(Vec2DTest, ConstructorAssignsMemberFields) {
+  // Given a Vec2D instance, when constructed using explicit values in SetUp method,
+  // Then the instance's fields match the arguments provided to a constructor.
+  ASSERT_EQ(m_vec.x(), 1.0);
+  ASSERT_EQ(m_vec.y(), 2.0);
 }
+
+TEST_F(Vec2DTest, CopyConstructorAssignsMemberFields) {
+  // Given an existing Vec2D instance,
+  // When a new Vec2D is instantiated from that existing instance,
+  Vec2D copy{m_vec};
+
+  // Then that new instance's fields match the fields of the original instance.
+  ASSERT_EQ(m_vec.x(), copy.x());
+  ASSERT_EQ(m_vec.y(), copy.y());
+}
+
+TEST_F(Vec2DTest, AssignmentOperatorAssignsMemberFields) {
+  // Given two existing Vec2D instances
+  Vec2D other{};
+
+  // When one of these instances is assigned to from the other,
+  other = m_vec;
+
+  // Then that instance's member fields match the fields of the source instance.
+  ASSERT_EQ(m_vec.x(), other.x());
+  ASSERT_EQ(m_vec.y(), other.y());
+}
+
+TEST_F(Vec2DTest, SettersUpdateTheValueOfMemberFields) {
+  m_vec.setX(3.0);
+  EXPECT_EQ(m_vec.x(), 3.0);
+
+  m_vec.setY(4.0);
+  EXPECT_EQ(m_vec.y(), 4.0);
+
+  m_vec.setXY(5.0, 6.0);
+  EXPECT_EQ(m_vec.x(), 5.0);
+  EXPECT_EQ(m_vec.y(), 6.0);
+}
+
 
 /*
 TEST_CASE("Vec2D class correctly implements its features")
 {
-  SECTION("Vec2D's setX, setY and setXY methods correctly set the member fields")
-  {
-    ::neon::Vec2D v;
-    v.setX(12);
-    REQUIRE(v.x() == 12);
-    v.setY(34);
-    REQUIRE(v.y() == 34);
-    v.setXY(56, 78);
-    REQUIRE(v.x() == 56);
-    REQUIRE(v.y() == 78);
-  }
-
-  SECTION("Vec2D's constructor correctly assigns the member fields")
-  {
-    ::neon::Vec2D v(12, 34);
-    CHECK(v.x() == 12);
-    CHECK(v.y() == 34);
-  }
-
-  SECTION("Vec2D's copy constructor correctly assigns the member fields")
-  {
-    ::neon::Vec2D original(12, 34);
-    ::neon::Vec2D another(original);
-    CHECK(another.x() == original.x());
-    CHECK(another.y() == original.y());
-  }
-
   SECTION("Vec2D's assignment operator correctly assigns values from other instance")
   {
     ::neon::Vec2D v1(12, 34);
