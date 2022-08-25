@@ -57,8 +57,7 @@ TEST_F(Vec2DTest, SettersUpdateTheValueOfMemberFields) {
   EXPECT_EQ(m_vec.y(), 6.0);
 }
 
-
-// Tests of Vec2D's comparison operators:
+// --- Tests of Vec2D's comparison operators:
 TEST_F(Vec2DTest, OperatorEquals) {
   // Given two extra Vec2D instances, one of which has the same field values as the default one;
   Vec2D v1{m_vec.x(), m_vec.y()};
@@ -71,43 +70,22 @@ TEST_F(Vec2DTest, OperatorEquals) {
   EXPECT_FALSE(m_vec == v2);
 }
 
+TEST_F(Vec2DTest, OperatorNotEquals) {
+  // Given two extra Vec2D instances, one of which has the same field values as the default one;
+  Vec2D v1{m_vec.x(), m_vec.y()};
+  // and the second one has different values as the default,
+  Vec2D v2{m_vec.x() + 1.0, m_vec.y() + 1.0};
+
+  // When comparing these instances,
+  // Then the first should not be deemed not equal to the original one, and the second one should be deemed not equal.
+  EXPECT_FALSE(m_vec != v1);
+  EXPECT_TRUE(m_vec != v2);
+}
+// --- End of tests of Vec2D1s comparison operators.
 
 /*
 TEST_CASE("Vec2D class correctly implements its features")
 {
-  SECTION("Vec2D's assignment operator correctly assigns values from other instance")
-  {
-    ::neon::Vec2D v1(12, 34);
-    ::neon::Vec2D v2(56, 78);
-    v1 = v2;
-    CHECK(v1.x() == v2.x());
-    CHECK(v1.y() == v2.y());
-
-    // Also assures that the original vector has not been modified:
-    CHECK(v2.x() == 56);
-    CHECK(v2.y() == 78);
-  }
-
-  SECTION("operator== correctly tests Vec2D instances for equivalence")
-  {
-    ::neon::Vec2D v1a(12, 34);
-    ::neon::Vec2D v2(56, 78);
-    ::neon::Vec2D v1b(12, 34);
-
-    CHECK(v1a == v1b);
-    CHECK_FALSE(v1a == v2);
-  }
-
-  SECTION("operator!= correctly tests Vec2D instances for nonequivalence")
-  {
-    ::neon::Vec2D v1a(12, 34);
-    ::neon::Vec2D v2(56, 78);
-    ::neon::Vec2D v1b(12, 34);
-
-    CHECK(v1a != v2);
-    CHECK_FALSE(v1a != v1b);
-  }
-
   //// Arithmetic operators' tests: ////
   SECTION("operator+ works correctly")
   {
