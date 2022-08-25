@@ -108,20 +108,22 @@ TEST_F(Vec2DTest, OperatorPlusEquals) {
   EXPECT_EQ(another.x(), x + m_vec.x());
   EXPECT_EQ(another.y(), y + m_vec.y());
 }
+
+TEST_F(Vec2DTest, OperatorUnaryMinus) {
+  // Given a Vec2D instance constructed in a SetUp method,
+  // When another instance is created using a copy constructor with that instance negated,
+  Vec2D another{-m_vec};
+
+  // Then each of the dimensions of the new Vec2D is equal to the negation of the corresponding dimension
+  // of the original Vec2D instance.
+  EXPECT_EQ(another.x(), -m_vec.x());
+  EXPECT_EQ(another.y(), -m_vec.y());
+}
 // --- End of tests of Vec2D's arithmetic operators.
 
 /*
 TEST_CASE("Vec2D class correctly implements its features")
 {
-  SECTION("unary minus operator works correctly")
-  {
-    double a = 12, b = 34;
-    ::neon::Vec2D v(a, b);
-    ::neon::Vec2D w = -v;
-    CHECK(w.x() == -a);
-    CHECK(w.y() == -b);
-  }
-
   SECTION("operator- works correctly")
   {
     double a = 12, b = 34, c = 56, d = 78;
