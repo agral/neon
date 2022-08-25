@@ -83,31 +83,36 @@ TEST_F(Vec2DTest, OperatorNotEquals) {
 }
 // --- End of tests of Vec2D1s comparison operators.
 
+// --- Tests of Vec2D's arithmetic operators:
+TEST_F(Vec2DTest, OperatorBinaryPlus) {
+  // Given an extra Vec2D instance,
+  Vec2D another{3.0, 5.0};
+
+  // When the sum of both vectors is computed using an overloaded operator+,
+  Vec2D sum{m_vec + another};
+
+  // Then the individual fields of the created instance are a sum of the components' relevant fields.
+  EXPECT_EQ(sum.x(), m_vec.x() + another.x());
+  EXPECT_EQ(sum.y(), m_vec.y() + another.y());
+}
+
+TEST_F(Vec2DTest, OperatorPlusEquals) {
+  // Given an extra Vec2D instance and remembering its original dimensions,
+  double x{3.0}, y{5.0};
+  Vec2D another{x, y};
+
+  // When the default instance is added to this instance using an overloaded operator+=,
+  another += m_vec;
+
+  // Then the individual fields of the modified instance are each increased accordingly.
+  EXPECT_EQ(another.x(), x + m_vec.x());
+  EXPECT_EQ(another.y(), y + m_vec.y());
+}
+// --- End of tests of Vec2D's arithmetic operators.
+
 /*
 TEST_CASE("Vec2D class correctly implements its features")
 {
-  //// Arithmetic operators' tests: ////
-  SECTION("operator+ works correctly")
-  {
-    double a = 12, b = 34, c = 56, d = 78;
-    ::neon::Vec2D v(a, b), w(c, d);
-
-    ::neon::Vec2D s = v + w;
-
-    CHECK(s.x() == a + c);
-    CHECK(s.y() == b + d);
-  }
-
-  SECTION("operator+= works correctly")
-  {
-    double a = 21, b = 43, c = 65, d = 87;
-    ::neon::Vec2D v(a, b), w(c, d);
-    v += w;
-
-    CHECK(v.x() == a + c);
-    CHECK(v.y() == b + d);
-  }
-
   SECTION("unary minus operator works correctly")
   {
     double a = 12, b = 34;
