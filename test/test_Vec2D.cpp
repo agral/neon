@@ -58,6 +58,20 @@ TEST_F(Vec2DTest, SettersUpdateTheValueOfMemberFields) {
 }
 
 
+// Tests of Vec2D's comparison operators:
+TEST_F(Vec2DTest, OperatorEquals) {
+  // Given two extra Vec2D instances, one of which has the same field values as the default one;
+  Vec2D v1{m_vec.x(), m_vec.y()};
+  // and the second one has different values as the default,
+  Vec2D v2{m_vec.x() + 1.0, m_vec.y() + 1.0};
+
+  // When comparing these instances,
+  // Then the first should be deemed equal to the original one, and the second one not equal.
+  EXPECT_TRUE(m_vec == v1);
+  EXPECT_FALSE(m_vec == v2);
+}
+
+
 /*
 TEST_CASE("Vec2D class correctly implements its features")
 {
