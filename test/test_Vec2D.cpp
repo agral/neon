@@ -7,11 +7,15 @@ using ::neon::Vec2D;
 
 namespace {
 class Vec2DTest: public ::testing::Test {
+public:
+  static constexpr double m_x{1.0};
+  static constexpr double m_y{2.0};
+
 protected:
   Vec2D m_vec;
 
   virtual void SetUp() override {
-    m_vec = Vec2D{1.0, 2.0};
+    m_vec = Vec2D{m_x, m_y};
   }
 };
 } // end of anonymous namespace
@@ -145,29 +149,38 @@ TEST_F(Vec2DTest, OperatorMinusEquals) {
   EXPECT_EQ(another.x(), x - m_vec.x());
   EXPECT_EQ(another.y(), y - m_vec.y());
 }
-// --- End of tests of Vec2D's arithmetic operators.
 
+TEST_F(Vec2DTest, OperatorMulDouble) {
+  // Given an instance of a Vec2D created in a SetUp method and a scale factor,
+  double factor{3.0};
+
+  // When a new instance is created with the original value multiplied by this factor
+  // using an overloaded operator*,
+  Vec2D another{m_vec * factor};
+
+  // Then the individual fields of the created instance are each a product
+  // of the relevant fields of the original instance and the factor.
+  EXPECT_EQ(another.x(), m_vec.x() * factor);
+  EXPECT_EQ(another.y(), m_vec.y() * factor);
+}
+
+TEST_F(Vec2DTest, OperatorMulEqualsDouble) {
+  // Given an instance of a Vec2D created in a SetUp method and a scale factor
+  double factor{3.0};
+
+  // When it is multiplied by that factor using an overloaded operator*=,
+  m_vec *= factor;
+
+  // Then the individual fields are each a product
+  // of their original values and the factor.
+  EXPECT_EQ(m_vec.x(), Vec2DTest::m_x * factor);
+  EXPECT_EQ(m_vec.y(), Vec2DTest::m_y * factor);
+}
+
+// --- End of tests of Vec2D's arithmetic operators.
 /*
 TEST_CASE("Vec2D class correctly implements its features")
 {
-  SECTION("operator*(double) works correctly")
-  {
-    double a = 12, b = 34, k = 5;
-    ::neon::Vec2D v(a, b);
-    ::neon::Vec2D w = v * k;
-    CHECK(w.x() == a * k);
-    CHECK(w.y() == b * k);
-  }
-
-  SECTION("operator*=(double) works correctly")
-  {
-    double a = 12, b = 34, k = 7;
-    ::neon::Vec2D v(a, b);
-    v *= k;
-    CHECK(v.x() == a * k);
-    CHECK(v.y() == b * k);
-  }
-
   SECTION("operator/(double) works correctly")
   {
     double a = 12, b = 36, k = 4;
