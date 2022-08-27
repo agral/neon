@@ -177,30 +177,37 @@ TEST_F(Vec2DTest, OperatorMulEqualsDouble) {
   EXPECT_EQ(m_vec.y(), Vec2DTest::m_y * factor);
 }
 
+TEST_F(Vec2DTest, OperatorDivDouble) {
+  // Given an instance of a Vec2D created in a SetUp method and a value to divide it by,
+  double divisor{3.0};
+
+  // When a new instance is created with the original value divided by this divisor
+  // using an overloaded operator/,
+  Vec2D another{m_vec / divisor};
+
+  // Then the individual fields of the created instance are each a quotient
+  // of the relevant fields of the original instance and the divisor.
+  EXPECT_EQ(another.x(), m_vec.x() / divisor);
+  EXPECT_EQ(another.y(), m_vec.y() / divisor);
+}
+
+TEST_F(Vec2DTest, OperatorDivEqualsDouble) {
+  // Given an instance of a Vec2D created in a SetUp method and a value to divide it by,
+  double divisor{3.0};
+
+  // When it is divided by that divisor using an overloaded operator/=,
+  m_vec /= divisor;
+
+  // Then the individual fields are each a quotient
+  // of their original values divided by the divisor.
+  EXPECT_EQ(m_vec.x(), Vec2DTest::m_x / divisor);
+  EXPECT_EQ(m_vec.y(), Vec2DTest::m_y / divisor);
+}
 // --- End of tests of Vec2D's arithmetic operators.
+
 /*
 TEST_CASE("Vec2D class correctly implements its features")
 {
-  SECTION("operator/(double) works correctly")
-  {
-    double a = 12, b = 36, k = 4;
-    ::neon::Vec2D v(a, b);
-    ::neon::Vec2D w = v / k;
-    CHECK(w.x() == a / k);
-    CHECK(w.y() == b / k);
-  }
-
-  SECTION("operator/=(double) works correctly")
-  {
-    double a = 12, b = 36, k = 3;
-    ::neon::Vec2D v(a, b);
-    v /= k;
-    CHECK(v.x() == a / k);
-    CHECK(v.y() == b / k);
-  }
-
-  //// End of arithmetic operators' tests. ////
-
   SECTION("Vec2D's magnitude is correctly calculated")
   {
     double a = -3, b = -4;
