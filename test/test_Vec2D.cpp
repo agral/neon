@@ -205,24 +205,9 @@ TEST_F(Vec2DTest, OperatorDivEqualsDouble) {
 }
 // --- End of tests of Vec2D's arithmetic operators.
 
-/*
-TEST_CASE("Vec2D class correctly implements its features")
-{
-  SECTION("Vec2D's magnitude is correctly calculated")
-  {
-    double a = -3, b = -4;
-    ::neon::Vec2D v1(a, b);
-    CHECK(v1.magnitude() == std::sqrt((a * a) + (b * b)));
-  }
-
-  SECTION("Vec2D's toString() method correctly serializes the instances")
-  {
-    ::neon::Vec2D v(12, 34);
-    CHECK(v.toString() == "(12, 34)");
-
-    // Ensures that floating point values get serialized correctly as well:
-    ::neon::Vec2D w(54.321, -9.876);
-    CHECK(w.toString() == "(54.321, -9.876)");
-  }
+TEST_F(Vec2DTest, MagnitudeIsCorrectlyCalculated) {
+  // Given an instance of a Vec2D created in a SetUp method,
+  // When its magnitude is calculated,
+  // Then the returned value matches the formula for the hypotenuse of a right triangle.
+  EXPECT_EQ(m_vec.magnitude(), std::sqrt((m_vec.x() * m_vec.x()) + (m_vec.y() * m_vec.y())));
 }
-*/
