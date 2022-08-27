@@ -162,6 +162,14 @@ TEST_F(Vec2DTest, OperatorMulDouble) {
   // of the relevant fields of the original instance and the factor.
   EXPECT_EQ(another.x(), m_vec.x() * factor);
   EXPECT_EQ(another.y(), m_vec.y() * factor);
+
+  // Additionally, when a new instance is created with a factor multiplied with the original instance,
+  Vec2D another_reversed{factor * m_vec};
+
+  // Then the individual fields of the created instance are each a product
+  // of the relevant fields of the original instance and the factor as well.
+  EXPECT_EQ(another_reversed.x(), m_vec.x() * factor);
+  EXPECT_EQ(another_reversed.x(), m_vec.x() * factor);
 }
 
 TEST_F(Vec2DTest, OperatorMulEqualsDouble) {

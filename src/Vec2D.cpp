@@ -84,10 +84,15 @@ Vec2D operator-(Vec2D lhs, const Vec2D& rhs)
   return lhs;
 }
 
-Vec2D operator*(Vec2D v, double k)
+Vec2D operator*(Vec2D v, double factor)
 {
-  v *= k;
+  v *= factor;
   return v;
+}
+
+Vec2D operator*(double factor, Vec2D v)
+{
+  return v * factor;
 }
 
 Vec2D operator/(Vec2D v, double k)

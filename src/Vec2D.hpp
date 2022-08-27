@@ -28,6 +28,8 @@ class Vec2D
   friend bool operator==(const Vec2D& lhs, const Vec2D& rhs);
   friend bool operator!=(const Vec2D& lhs, const Vec2D& rhs);
   friend Vec2D operator-(const Vec2D& v);
+  friend Vec2D operator*(double factor, Vec2D v);
+  friend Vec2D operator*(Vec2D v, double factor);
 
  private:
   double m_x;
@@ -39,7 +41,8 @@ bool operator!=(const Vec2D& lhs, const Vec2D& rhs);
 Vec2D operator+(Vec2D lhs, const Vec2D& rhs);
 Vec2D operator-(const Vec2D& v);
 Vec2D operator-(Vec2D lhs, const Vec2D& rhs);
-Vec2D operator*(Vec2D v, double k);
+Vec2D operator*(double factor, Vec2D v);
+Vec2D operator*(Vec2D v, double factor);
 Vec2D operator/(Vec2D v, double k);
 
 } // namespace neon
